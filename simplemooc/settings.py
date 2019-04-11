@@ -11,23 +11,10 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
-
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-# Base do diretório = pasta simplemooc raiz, que contém o manage.py 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '9w)u#uz$5j^zxlrnu)hgz=)9i4rkx_1t8e3gf2&gu!u-0$zt*%'
-
-# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
-
 TEMPLATE_DEBUG = False
-
-# Application definition
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -119,8 +106,6 @@ MEDIA_URL = '/media/'
 # Emails
 # EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-# Esse console não vai mandar o email, mas printa no console
-# Em produção, basta colocar uma conta válida no from, host user e password
 DEFAULT_FROM_EMAIL = 'De <de@gmail.com>'
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
@@ -143,17 +128,8 @@ PASSWORD_RESET_TIMEOUT_DAYS = 1
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 ALLOWED_HOSTS = ['*']
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/2.1/howto/static-files/
-# STATIC_URL = '/static/simplemooc/'
-# STATIC_ROOT = os.path.join(BASE_DIR, "simplemooc/static/simplemooc")
-
 STATIC_ROOT = 'staticfiles'
 STATIC_URL = '/static/'
-
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static')
-)
 
 try:
     from simplemooc.local_settings import *
