@@ -168,7 +168,7 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
     # os.path.join(BASE_DIR, 'static'),
-    os.path.join(BASE_DIR, 'simplemooc/core/static'),
+    os.path.join(BASE_DIR, 'app/staticfiles'),
 )
 
 import dj_database_url
