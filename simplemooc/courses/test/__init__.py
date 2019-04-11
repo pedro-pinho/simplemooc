@@ -1,0 +1,2 @@
+from .test_views import ContactCourseTestCase, EnrollTestCase, AnnouncementsTestCase
+from .test_models import CourseManagerTestCase

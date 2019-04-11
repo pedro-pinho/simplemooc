@@ -1,0 +1,6 @@
+<li class="pure-menu-heading">Meus Cursos</li>
+{% for enroll in enrollments%}
+<li><a href="{% url 'courses:details' enroll.course.slug %}">{{enroll.course.name}}</a></li>
+{% empty %}
+<li><a href="{% url 'courses:index' %}">Cadastre-se em algum curso de sua escolha</a></li>
+{% endfor %}

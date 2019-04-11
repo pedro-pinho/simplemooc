@@ -1,0 +1,27 @@
+{% extends "courses/course_dashboard.html" %}
+
+{% block breadcrumb %}
+    {{ block.super }}
+    <li>/</li>
+    <li><a href="{% url 'courses:lessons' course.slug %}">Aulas</a></li>
+    <li>/</li>
+    <li><a href="{% url 'courses:lesson' course.slug lesson.pk %}">{{ lesson }}</a></li>
+    <li>/</li>
+    <li><a href="{% url 'courses:material' course.slug material.pk %}">{{ material }}</a></li>
+{% endblock %}
+
+{% block dashboard_content %}
+<div class="well">
+    <h2><a href="{% url 'courses:material' course.slug material.pk %}">{{ material }}</a></h2>
+    {% comment %}
+        Por padrão, o django não deixa jogar uma html assim do banco
+        O usuário pode inserir uma tag script de um js que derruba o banco, por exemplo
+        Então ele sempre tenta escapar os caracteres do html, sem parsear
+        Com o filtro safe, ele parseia
+    {% endcomment %}
+    {{ material.embedded|safe }}
+    <p>
+        <a href="{% url 'courses:lesson' course.slug lesson.pk %}">Voltar</a>
+    </p>
+</div>
+{% endblock %}

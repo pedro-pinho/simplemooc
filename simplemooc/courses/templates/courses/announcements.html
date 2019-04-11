@@ -1,0 +1,31 @@
+{% extends "courses/course_dashboard.html" %}
+
+{% block dashboard_content %}
+{% for announcement in announcements %}
+<div class="well">
+    <h2>
+        <a href="{% url 'courses:announcement_detail' course.slug announcement.pk %}">
+            {{announcement.title}}
+        </a>
+    </h2>
+    <p>
+        {{ announcement.content|linebreaks }}
+    </p>
+    <p>
+        <a href="{% url 'courses:announcement_detail' course.slug announcement.id %}#comments" title="">
+        <i class="fa fa-comments-o"></i>
+        {% comment %} {{ announcement.comments.count }} Comentário{% if announcement.comments.count > 1 %}s{% endif %} {% endcomment %}
+        {% comment %} ou {{ announcement.comments.count }} Comentário{{ announcement.comments.count|pluralize }} {% endcomment %}
+        {% with comment_count=announcement.comments.count %}
+        {{ comment_count }} Comentário{{ comment_count|pluralize }}
+        {% comment %} dá pra personalizar o pluralize:"singular, plural" {% endcomment %}
+        {% endwith %}
+        </a>
+    </p>
+</div>
+{% empty %}
+<div class="well">
+    <h2>Nenhum anúncio por enquanto, mergulhe já nas aulas!</h2>
+</div>
+{% endfor %}
+{% endblock %}
