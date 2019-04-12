@@ -27,5 +27,5 @@ urlpatterns = [
     path('cursos/', include('simplemooc.courses.urls', namespace='courses')),
     path('admin/', admin.site.urls),
 ]
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) #em Produção, se coloca em um servidor a parte
+# if settings.DEBUG:
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -131,13 +131,8 @@ ALLOWED_HOSTS = ['*']
 STATIC_ROOT = 'staticfiles'
 STATIC_URL = '/static/'
 
-STATICFILES_FINDERS = [
-    'django.contrib.staticfiles.finders.FileSystemFinder',
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-]
-
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "app", "simplemooc", "core", "static")
+    os.path.join(BASE_DIR, "simplemooc", "core", "static")
 ]
 
 try:
