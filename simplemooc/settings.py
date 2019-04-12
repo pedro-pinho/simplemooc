@@ -9,10 +9,11 @@ https://docs.djangoproject.com/en/2.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.1/ref/settings/
 """
-
 import os
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+import django_heroku
+# BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 SECRET_KEY = '9w)u#uz$5j^zxlrnu)hgz=)9i4rkx_1t8e3gf2&gu!u-0$zt*%'
 DEBUG = False
@@ -134,9 +135,14 @@ ALLOWED_HOSTS = ['*']
 STATIC_ROOT = 'staticfiles'
 STATIC_URL = '/static/'
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# Extra places for collectstatic to find static files.
+STATICFILES_DIRS = (
+    (os.path.join(BASE_DIR,'core','static')),
+)
 
 try:
     from simplemooc.local_settings import *
 except ImportError:
     pass
+
+django_heroku.settings(locals())
