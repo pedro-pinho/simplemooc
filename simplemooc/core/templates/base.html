@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://yui-s.yahooapis.com/pure/0.3.0/pure-min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/transition.css' %}" />
 </head>
 <body>
 <div class="header">
@@ -17,6 +18,7 @@
         <ul>
             <li class="pure-menu-selected"><a href="{% url 'core:home' %}">Início</a></li>
             <li><a href="{% url 'courses:index' %}">Cursos</a></li>
+            <li><a href="{% url 'forum:index' %}">Forum</a></li>
             {% comment %} o render do django.shortcuts trás esse contexto a mais de user com permissoes, debug, i18n, media e outros {% endcomment %}
             {% if user.is_authenticated %} 
             <li><a href="{% url 'accounts:dashboard' %}">Painel</a></li>
@@ -43,6 +45,7 @@
         Simple MOOC - Uma simples plataforma de ensino a distância
     </div>
 </div>
+{% block scripts %}{% endblock %}
 <script src="https://yui-s.yahooapis.com/3.12.0/build/yui/yui-min.js"></script>
 <script defer src="https://use.fontawesome.com/releases/v5.8.1/js/all.js" integrity="sha384-g5uSoOSBd7KkhAMlnQILrecXvzst9TdC09/VM+pjDTCM+1il8RHz5fKANTFFb+gQ" crossorigin="anonymous"></script>
 </body>
